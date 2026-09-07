@@ -1,24 +1,17 @@
-import { Component } from 'react'
 import './App.css'
 import { 
     Screen, 
     Header,
     Button, 
     SideMenu, 
-    MainContent
+    MainContent,
+    ControlBar
  } from './components'
 
 
-class App extends Component {
-    constructor(props) {
-        super(props)
-
-
-    }
-
-    render() {
-        return(
-            <Screen>
+ function App() {
+    return (
+        <Screen>
 
                 <SideMenu>
                     <Button>Início</Button>
@@ -31,10 +24,15 @@ class App extends Component {
                 </Header>
 
                 <MainContent/>
+                
+                <ControlBar>
+                    <Button aria-label="Música anterior" className='control-button'>{'<'}</Button>
+                    <Button aria-label="Pausar" className='control-button'>||</Button>
+                    <Button aria-label="Próxima música" className='control-button'>{'>'}</Button>
+                </ControlBar>
 
             </Screen>
-        )
-    }
-}
+    )
+ }
 
 export default App

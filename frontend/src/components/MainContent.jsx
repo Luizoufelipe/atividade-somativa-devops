@@ -1,7 +1,10 @@
-export function MainContent() {
+import React from "react"
+
+export function MainContent({ children }) {
     return (
         <section className="main-content">
-            <h1>Conteúdo principal</h1>
+            <h1>Biblioteca</h1>
+            {children}
         </section>
     )
 }

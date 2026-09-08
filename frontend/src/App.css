@@ -1,5 +1,20 @@
+:root {
+    --cor-fundo: #121212;
+    --cor-texto: #e5e5e5;
+    --cor-texto-secundario: #a7a7a7;
+    --cor-superficie: #333;
+    --cor-borda: #333;
+
+    --fonte-principal: "Roboto", sans-serif;
+}
+
 * {
     box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    color: var(--cor-texto);
 }
 
 main {
@@ -12,8 +27,12 @@ main {
         "aside content"
         "controls controls";
 
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 0;
+    overflow: hidden;
     width: 100%;
+
+    background-color: var(--cor-fundo);
 }
 
 @media (max-width: 600px) {
@@ -24,6 +43,12 @@ main {
             "header"
             "content"
             "controls";
+    }
+
+    .main-content {
+        padding: 1rem;
+        padding-top: 90px;
+        gap: 1rem;
     }
 
     .side-menu {
@@ -46,9 +71,33 @@ button {
 
 .main-content {
     grid-area: content;
+    min-width: 0;
+    min-height: 0;
+
     padding: 2rem;
+    padding-top: 30px;
+    padding-bottom: 100px;
+
     overflow-y: auto;
-    background-color: black;
+    overflow-x: hidden;
+    background-color: var(--cor-fundo);
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-auto-rows: max-content;
+    gap: 1.5rem;
+    justify-content: start;
+    align-content: start;
+    align-items: start;
+}
+
+.main-content h1 {
+    grid-column: 1/-1;
+    margin: 0 0 1rem;
+    color: var(--cor-texto);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .menu-button {
@@ -56,14 +105,22 @@ button {
     border-radius: 10px;
     background-color: transparent;
     cursor: pointer;
-    color: white;
+    color: var(--cor-texto);
     padding: 0.75rem 1rem;
-    transition: background-color; 
+    transition: background-color;
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.menu-button svg {
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
 .menu-button:hover {
     background-color: rgba(128, 128, 128, 0.315);
-    color: white;
 }
 
 .menu-button:focus-visible {
@@ -78,14 +135,25 @@ button {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #333;
-    background-color: black;
-    
+    background-color: var(--cor-fundo);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 70px;
+    z-index: 1100;
 }
 
 .side-menu {
     grid-area: aside;
-    background-color: black;
+    background-color: var(--cor-fundo);
     border-right: 1px solid #333;
+    position: fixed;
+    bottom: 80px;
+    top: 70px;
+    left: 0;
+    width: 210px;
+    z-index: 900;
 }
 
 .side-menu ul {
@@ -108,19 +176,87 @@ button {
 
 .control-bar {
     grid-area: controls;
-    width: 100%;
-    background-color: black;
+    background-color: var(--cor-fundo);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
     border-top: 1px solid #333;
+    
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    width: 100%;
 }
 
-.control-bar .menu-button {
+.control-button {
     min-width: 48px;
     min-height: 48px;
     border-radius: 25px;
     padding: 0.5rem;
+    justify-content: center;
+}
+
+.control-button svg {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.playlist-card {
+    min-height: 240px;
+    height: max-content;
+    width: 180px;
+
+    border: 0;
+    border-radius: 8px;
+    background-color: transparent;
+    overflow: visible;
+}
+
+.playlist-card:hover {
+    background-color:rgba(128, 128, 128, 0.315);
+}
+
+.playlist-card h2 {
+    margin: 0.75rem 0 0.25rem;
+    color: var(--cor-texto);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.playlist-card p {
+    margin: 0;
+    color: var(--cor-texto-secundario);
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+.image-frame {
+    height: 180px;
+    width: 180px;
+    background-color: #333;
+    padding: 0;
+    border-radius: 8px;
+
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--cor-borda);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

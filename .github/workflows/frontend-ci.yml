@@ -1,0 +1,26 @@
+name: React Frontend CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Baixar o código
+      uses: actions/checkout@v4
+      
+    - name: Configurar ambiente Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        
+    - name: Instalar dependências e compilar (Build)
+      working-directory: ./frontend
+      run: |
+        npm install
+        npm run build

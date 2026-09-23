@@ -16,7 +16,8 @@ import {
     SideMenu, 
     MainContent,
     ControlBar,
-    PlaylistCard
+    PlaylistCard,
+    Mp3Player
  } from './components'
 
 

@@ -1,9 +1,13 @@
 name: React Frontend Tests
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
+        - main
+  pull_request:
+        branches:
+        - main
+  workflow_dispatch:
 
 jobs:
   unit-tests:
